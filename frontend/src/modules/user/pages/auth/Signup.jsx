@@ -62,7 +62,7 @@ const Signup = () => {
   const [otpSending, setOtpSending] = useState(false);
   const fileInputRef = useRef(null);
 
-  const appName = settings.general?.app_name || 'Appzeto 24';
+  const appName = settings.general?.app_name || '24FastGo';
   const appLogo = settings.general?.logo || settings.customization?.logo || settings.general?.favicon || '';
 
   const isValidPhone = /^\d{10}$/.test(formData.phone);
@@ -415,7 +415,7 @@ const Signup = () => {
             <span className="login-accent-text">
               {step === 'profile' ? 'Complete Profile' : 'Start Journey'}
             </span> <br />
-            Standard with Appzeto
+            Standard with 24FastGo
           </h1>
         </div>
       </div>
