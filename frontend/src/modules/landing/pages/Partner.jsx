@@ -53,7 +53,7 @@ const Partner = () => {
                 const PerkIcon = perk.icon;
                 return (
                   <div className="perk-card" key={index}>
-                    <PerkIcon size={28} color="#00BBA9" />
+                    <PerkIcon size={28} style={{ color: 'var(--accent-fg)' }} />
                     <h4>{perk.title}</h4>
                     <p>{perk.desc}</p>
                   </div>
@@ -82,7 +82,7 @@ const Partner = () => {
 
             {submitted ? (
               <div className="form-success text-center py-6">
-                <CheckCircle2 size={50} color="#00BBA9" className="mx-auto mb-4" />
+                <CheckCircle2 size={50} style={{ color: 'var(--accent-fg)' }} className="mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-white mb-2">Application Received!</h4>
                 <p className="text-gray-300 text-sm">
                   Our Fleet Onboarding officer will call <strong>{mobile}</strong> to verify your vehicle documents.
@@ -136,7 +136,7 @@ const Partner = () => {
                 {error && (
                   <p style={{ color: '#e11d48', fontSize: '0.85rem', marginBottom: '0.75rem' }}>{error}</p>
                 )}
-                <button type="submit" className="btn btn-teal w-full mt-4" disabled={sending}>
+                <button type="submit" className="btn btn-accent w-full mt-4" disabled={sending}>
                   {sending ? 'Sending\u2026' : 'Submit Attachment Form'} <ArrowRight size={16} />
                 </button>
               </form>
@@ -182,8 +182,9 @@ const Partner = () => {
           }
 
           .earnings-box {
-            background: #07152B;
-            border: 1px solid rgba(0, 187, 169, 0.3);
+            background: var(--navy-dark);
+            --accent-fg: var(--brand-yellow);
+            border: 1px solid rgba(251, 222, 43, 0.3);
             border-radius: 12px;
             padding: 20px;
             color: #FFFFFF;
@@ -192,7 +193,7 @@ const Partner = () => {
           .earnings-title {
             font-size: 16px;
             font-weight: 700;
-            color: #00BBA9;
+            color: var(--accent-fg);
             margin-bottom: 14px;
           }
 
@@ -211,13 +212,14 @@ const Partner = () => {
           }
 
           .e-val {
-            color: #00BBA9;
+            color: var(--accent-fg);
             font-weight: 700;
           }
 
           .partner-form-card {
             background: #0C1B30;
-            border: 1px solid rgba(0, 187, 169, 0.3);
+            --accent-fg: var(--brand-yellow);
+            border: 1px solid rgba(251, 222, 43, 0.3);
             border-radius: 16px;
             padding: 32px;
             color: #FFFFFF;
