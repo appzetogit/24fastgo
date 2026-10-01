@@ -104,7 +104,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             </div>
 
             <div className="input-group">
-              <label><MapPin size={16} color="#00BBA9" /> Pickup Location</label>
+              <label><MapPin size={16} style={{ color: 'var(--accent-fg)' }} /> Pickup Location</label>
               <input 
                 type="text" 
                 value={pickup} 
@@ -114,7 +114,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             </div>
 
             <div className="input-group">
-              <label><MapPin size={16} color="#00BBA9" /> Drop Location</label>
+              <label><MapPin size={16} style={{ color: 'var(--accent-fg)' }} /> Drop Location</label>
               <input 
                 type="text" 
                 value={drop} 
@@ -125,7 +125,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
 
             <div className="input-row">
               <div className="input-group">
-                <label><Calendar size={16} color="#00BBA9" /> Date & Time</label>
+                <label><Calendar size={16} style={{ color: 'var(--accent-fg)' }} /> Date & Time</label>
                 <input 
                   type="date" 
                   value={date} 
@@ -134,7 +134,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
               </div>
 
               <div className="input-group">
-                <label><User size={16} color="#00BBA9" /> Passengers</label>
+                <label><User size={16} style={{ color: 'var(--accent-fg)' }} /> Passengers</label>
                 <select value={passengers} onChange={(e) => setPassengers(e.target.value)}>
                   <option value="1">1 Passenger</option>
                   <option value="2">2 Passengers</option>
@@ -145,7 +145,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             </div>
 
             <div className="vehicle-selector">
-              <label className="section-sublabel"><Car size={16} color="#00BBA9" /> Select Preferred Vehicle</label>
+              <label className="section-sublabel"><Car size={16} style={{ color: 'var(--accent-fg)' }} /> Select Preferred Vehicle</label>
               <div className="vehicle-grid">
                 {vehicleOptions.map((v) => (
                   <div 
@@ -168,7 +168,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
 
             <div className="modal-footer">
               <button 
-                className="btn btn-teal w-full"
+                className="btn btn-accent w-full"
                 onClick={() => setStep(2)}
               >
                 Proceed to Passenger Info <ArrowRight size={18} />
@@ -224,7 +224,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             )}
 
             <div className="security-notice">
-              <Shield size={16} color="#00BBA9" />
+              <Shield size={16} style={{ color: 'var(--accent-fg)' }} />
               <span>Zero cancellation fee • Pay directly to driver or via UPI after trip</span>
             </div>
 
@@ -236,7 +236,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
               >
                 Back
               </button>
-              <button type="submit" className="btn btn-teal flex-1" disabled={submitting}>
+              <button type="submit" className="btn btn-accent flex-1" disabled={submitting}>
                 {submitting ? 'Sending…' : 'Confirm Cab Booking'}
               </button>
             </div>
@@ -247,7 +247,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
         {step === 3 && (
           <div className="modal-body text-center py-6">
             <div className="success-icon-box">
-              <CheckCircle2 size={56} color="#00BBA9" />
+              <CheckCircle2 size={56} style={{ color: 'var(--accent-fg)' }} />
             </div>
             <h4 className="confirm-title">Cab Booked Successfully!</h4>
             <p className="confirm-text">
@@ -258,7 +258,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
               <p>📞 Call us: {CONTACT.tollFree}</p>
             </div>
 
-            <button className="btn btn-teal w-full mt-6" onClick={handleReset}>
+            <button className="btn btn-accent w-full mt-6" onClick={handleReset}>
               Done & Return to Homepage
             </button>
           </div>
@@ -273,7 +273,8 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(7, 21, 43, 0.85);
+            background-color: rgba(7, 29, 47, 0.85);
+            --accent-fg: var(--brand-yellow);
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -284,7 +285,8 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
 
           .modal-card {
             background-color: #0C1B30;
-            border: 1px solid rgba(0, 187, 169, 0.3);
+            --accent-fg: var(--brand-yellow);
+            border: 1px solid rgba(251, 222, 43, 0.3);
             border-radius: 16px;
             width: 100%;
             max-width: 540px;
@@ -312,15 +314,16 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             align-items: flex-start;
             padding: 20px 24px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background-color: #07152B;
+            background-color: var(--navy-dark);
+            --accent-fg: var(--brand-yellow);
           }
 
           .modal-badge {
             display: inline-block;
             font-size: 11px;
             font-weight: 600;
-            color: #00BBA9;
-            background: rgba(0, 187, 169, 0.12);
+            color: var(--accent-fg);
+            background: rgba(251, 222, 43, 0.12);
             padding: 2px 8px;
             border-radius: 4px;
             margin-bottom: 4px;
@@ -374,8 +377,8 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
           }
 
           .tab-pill.active {
-            background-color: #00BBA9;
-            color: #FFFFFF;
+            background-color: var(--brand-yellow);
+            color: var(--primary-navy);
             font-weight: 600;
           }
 
@@ -411,12 +414,12 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
           }
 
           .vehicle-card-item:hover {
-            border-color: rgba(0, 187, 169, 0.5);
+            border-color: rgba(251, 222, 43, 0.5);
           }
 
           .vehicle-card-item.selected {
-            border-color: #00BBA9;
-            background: rgba(0, 187, 169, 0.12);
+            border-color: var(--brand-yellow);
+            background: rgba(251, 222, 43, 0.12);
           }
 
           .v-item-header {
@@ -432,7 +435,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
           }
 
           .v-rate {
-            color: #00BBA9;
+            color: var(--accent-fg);
           }
 
           .v-item-sub {
@@ -469,11 +472,11 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
           }
 
           .sum-val.highlight {
-            color: #00BBA9;
+            color: var(--accent-fg);
           }
 
           .sum-val.fare {
-            color: #00BBA9;
+            color: var(--accent-fg);
             font-weight: 700;
             font-size: 14px;
           }
@@ -493,7 +496,7 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
             gap: 8px;
             font-size: 12px;
             color: #94A3B8;
-            background: rgba(0, 187, 169, 0.06);
+            background: rgba(251, 222, 43, 0.06);
             padding: 8px 12px;
             border-radius: 6px;
           }
@@ -526,8 +529,8 @@ const BookingModal = ({ isOpen, onClose, selectedVehicle = null }) => {
           }
 
           .driver-assign-card {
-            background: rgba(0, 187, 169, 0.08);
-            border: 1px solid rgba(0, 187, 169, 0.2);
+            background: rgba(251, 222, 43, 0.08);
+            border: 1px solid rgba(251, 222, 43, 0.2);
             border-radius: 10px;
             padding: 14px;
             margin-top: 14px;
