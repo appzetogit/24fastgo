@@ -89,8 +89,8 @@ export default function Preloader() {
         <div className="pl-brand">
           <img src={brand.logo} alt="" className="pl-logo" />
           <span className="pl-wordmark">
-            <span className="pl-zi">{brand.wordmarkPrimary}</span>
-            <span className="pl-cab">{brand.wordmarkSecondary}</span>
+            <span className="pl-wm-primary">{brand.wordmarkPrimary}</span>
+            <span className="pl-wm-secondary">{brand.wordmarkSecondary}</span>
           </span>
         </div>
         <div className="pl-meta">

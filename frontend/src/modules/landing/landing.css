@@ -9,20 +9,26 @@
    by the booking modal, which renders outside the landing subtree. */
 
 :root {
-  --primary-navy: #0B1F3A;
-  --navy-dark: #07152B;
-  --navy-card: #0C1B30;
+  /* Brand palette, taken from the logo: navy field, yellow stripe, white mark. */
+  --primary-navy: #0A263C;
+  --navy-dark: #071D2F;
+  --navy-card: #0C2236;
   /* one step deeper than navy-dark, for the recessed bands */
-  --navy-deep: #050F20;
+  --navy-deep: #051623;
 
-  --primary-teal: #00BBA9;
-  --teal-hover: #00a394;
-  --teal-light: rgba(0, 187, 169, 0.12);
-  --teal-bright: #46E3D2;
-  --teal-ink: #04645C;
+  --brand-yellow: #FBDE2B;
+  --yellow-hover: #F5D000;
+  --yellow-light: rgba(251, 222, 43, 0.14);
+
+  /* Accent for text and icons. Yellow on white is ~1.4:1 — unreadable — so on
+     light surfaces the accent is navy, and any rule that paints a navy surface
+     flips it to yellow for everything inside (see `--accent-fg: var(--brand-yellow)`
+     next to navy backgrounds). Yellow itself is used on light surfaces only as a
+     fill, with navy on top. */
+  --accent-fg: var(--primary-navy);
 
   /* Warm off-white instead of #FFF for large fields — pure white next to a
-     saturated teal reads cheap and glares on an OLED phone. */
+     saturated yellow glares on an OLED phone. */
   --bg-light: #F1F3F7;
   --bg-white: #FBFBFC;
   --bg-raised: #FFFFFF;
@@ -44,7 +50,7 @@
   --shadow-sm: 0 1px 2px rgba(11, 18, 32, 0.04), 0 4px 12px rgba(11, 18, 32, 0.045);
   --shadow-md: 0 2px 4px rgba(11, 18, 32, 0.045), 0 12px 28px rgba(11, 18, 32, 0.07);
   --shadow-lg: 0 4px 8px rgba(11, 18, 32, 0.05), 0 24px 54px rgba(11, 18, 32, 0.1);
-  --shadow-teal: 0 6px 14px rgba(0, 187, 169, 0.28), 0 18px 40px rgba(0, 187, 169, 0.18);
+  --shadow-yellow: 0 6px 14px rgba(251, 222, 43, 0.22), 0 18px 40px rgba(251, 222, 43, 0.12);
   --hairline: inset 0 1px 0 rgba(255, 255, 255, 0.85);
   --hairline-dark: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
@@ -143,10 +149,11 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0B1F3A;
+    background: var(--primary-navy);
+    --accent-fg: var(--brand-yellow);
   }
   ::-webkit-scrollbar-thumb {
-    background: #00BBA9;
+    background: var(--brand-yellow);
     border-radius: 4px;
   }
 
@@ -211,7 +218,7 @@
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--primary-teal);
+    color: var(--accent-fg);
   }
 
   .eyebrow::after {
@@ -219,7 +226,7 @@
     flex: 1 1 auto;
     max-width: 88px;
     height: 1px;
-    background: linear-gradient(90deg, var(--primary-teal), transparent);
+    background: linear-gradient(90deg, var(--brand-yellow), transparent);
   }
 
   .eyebrow-num {
@@ -241,7 +248,7 @@
     padding: 0;
     outline: none;
     cursor: pointer;
-    color: var(--primary-teal);
+    color: var(--accent-fg);
     font-weight: 600;
     font-size: 14px;
     display: inline-flex;
@@ -251,7 +258,7 @@
   }
 
   .section-link:hover {
-    color: var(--teal-hover);
+    color: var(--accent-fg);
     transform: translateX(4px);
   }
 
@@ -268,10 +275,11 @@
     text-align: center;
     overflow: hidden;
     background-color: var(--navy-deep);
+    --accent-fg: var(--brand-yellow);
     background-image:
-      radial-gradient(110% 130% at 12% -10%, rgba(0, 187, 169, 0.22) 0%, transparent 52%),
+      radial-gradient(110% 130% at 12% -10%, rgba(251, 222, 43, 0.22) 0%, transparent 52%),
       radial-gradient(90% 120% at 88% 0%, rgba(43, 92, 168, 0.28) 0%, transparent 55%),
-      linear-gradient(160deg, #08182F 0%, #0B1F3A 55%, #071328 100%);
+      linear-gradient(160deg, #061A2A 0%, var(--primary-navy) 55%, #061A2A 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
@@ -288,14 +296,14 @@
 
   .page-hero .page-tag {
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(0, 187, 169, 0.3);
+    border: 1px solid rgba(251, 222, 43, 0.3);
   }
 
   .page-tag {
     font-size: 12px;
     font-weight: 700;
-    color: var(--primary-teal);
-    background: var(--teal-light);
+    color: var(--accent-fg);
+    background: var(--yellow-light);
     padding: 4px 12px;
     border-radius: var(--radius-full);
     text-transform: uppercase;
@@ -409,16 +417,16 @@
     transform: translateY(0) scale(0.985);
   }
 
-  .btn-teal {
-    background-image: linear-gradient(180deg, #14CDBA 0%, var(--primary-teal) 48%, #009C8D 100%);
-    color: var(--text-white);
-    box-shadow: var(--shadow-teal), inset 0 1px 0 rgba(255, 255, 255, 0.34),
+  .btn-accent {
+    background-image: linear-gradient(180deg, #FFE45C 0%, var(--brand-yellow) 48%, #EBC800 100%);
+    color: var(--primary-navy);
+    box-shadow: var(--shadow-yellow), inset 0 1px 0 rgba(255, 255, 255, 0.34),
       inset 0 -1px 0 rgba(0, 0, 0, 0.12);
   }
 
-  .btn-teal:hover {
+  .btn-accent:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 187, 169, 0.34), 0 26px 52px rgba(0, 187, 169, 0.22),
+    box-shadow: 0 10px 20px rgba(251, 222, 43, 0.34), 0 26px 52px rgba(251, 222, 43, 0.22),
       inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
@@ -432,7 +440,7 @@
 
   .btn-outline-light:hover {
     background: rgba(255, 255, 255, 0.13);
-    border-color: rgba(0, 187, 169, 0.65);
+    border-color: rgba(251, 222, 43, 0.65);
     color: #FFFFFF;
     transform: translateY(-2px);
   }
@@ -447,16 +455,18 @@
   }
 
   :where(button, a, input, select, textarea):focus-visible {
-    outline: 2px solid var(--teal-bright);
+    outline: 2px solid var(--accent-fg);
     outline-offset: 2px;
   }
 
   .btn-navy {
     background-color: var(--primary-navy);
+    --accent-fg: var(--brand-yellow);
     color: var(--text-white);
   }
   .btn-navy:hover {
     background-color: var(--navy-dark);
+    --accent-fg: var(--brand-yellow);
     transform: translateY(-2px);
   }
 
@@ -490,16 +500,20 @@
 
   .input-group input:focus,
   .input-group select:focus {
-    border-color: var(--primary-teal);
-    box-shadow: 0 0 0 2px rgba(0, 187, 169, 0.2);
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 2px rgba(251, 222, 43, 0.2);
   }
 
   .input-group select option {
     background: var(--navy-card);
+    --accent-fg: var(--brand-yellow);
   }
 
   /* ---- Intro curtain ---- */
   .preloader {
+    /* The navy comes from the two sliding panels, which are siblings of the
+       wordmark rather than its ancestors — so the accent is set here. */
+    --accent-fg: var(--brand-yellow);
     position: fixed;
     inset: 0;
     z-index: 3000;
@@ -515,6 +529,7 @@
     width: 100%;
     height: 50.5%;
     background: var(--navy-dark);
+    --accent-fg: var(--brand-yellow);
   }
 
   .pl-panel-top {
@@ -557,13 +572,13 @@
     letter-spacing: -0.5px;
   }
 
-  .pl-zi {
+  .pl-wm-primary {
     color: var(--text-white);
     font-style: italic;
   }
 
-  .pl-cab {
-    color: var(--primary-teal);
+  .pl-wm-secondary {
+    color: var(--accent-fg);
     margin-left: 4px;
     letter-spacing: 1px;
   }
@@ -585,7 +600,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: var(--primary-teal);
+    background: var(--brand-yellow);
     transform: scaleX(0);
     transform-origin: 0 50%;
   }
@@ -712,7 +727,7 @@
       width: 100%;
       z-index: 1100;
       transform-origin: 0 50%;
-      background: linear-gradient(90deg, var(--primary-teal), #6ee7db);
+      background: linear-gradient(90deg, var(--brand-yellow), #FFE45C);
       animation: zc-scrollProgress linear;
       animation-timeline: scroll(root block);
     }
@@ -802,8 +817,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    background: rgba(0, 187, 169, 0.15);
-    color: var(--primary-teal);
+    background: rgba(251, 222, 43, 0.15);
+    color: var(--accent-fg);
     font-weight: 700;
     letter-spacing: 0.5px;
   }
