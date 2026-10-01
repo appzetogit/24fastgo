@@ -4,22 +4,31 @@ Copies of the production server config, so a rebuilt box can be brought back to
 the same state. These files are **not** applied automatically — they are a record
 of what is running.
 
-Live on `zicab.in`:
+Live on `24fastgo.com` (VPS `187.127.179.65`, a CloudPanel box — leave its other
+sites and services alone):
 
-| File | Installed at |
+| What | Where |
 |---|---|
-| `nginx/zicab.conf` | `/etc/nginx/sites-available/zicab` (symlinked into `sites-enabled`) |
-| `nginx/zicab-upstream.conf` | `/etc/nginx/conf.d/zicab-upstream.conf` |
+| Repo checkout | `/var/www/24fastgo` |
+| Built frontend | `/var/www/24fastgo-web` |
+| `nginx/24fastgo.conf` | `/etc/nginx/sites-enabled/24fastgo.conf` (nginx only loads `*.conf` there) |
+| TLS cert | Let's Encrypt via `certbot --webroot -w /var/www/24fastgo-acme`, auto-renews and reloads nginx |
+| MongoDB 8.0 | local, `127.0.0.1:27017`, auth on, db `24fastgo_taxi`; credentials in `/root/.24fastgo-mongo-credentials` |
+| Redis | the box's shared Redis, DB index `5` |
 
-The app itself runs under PM2 as four instances (`zicab-api-5000` … `5003`),
-which nginx load-balances via the upstream block.
+The app runs under PM2 as four instances (`24fastgo-api-5000` … `5003`, see
+`Backend/ecosystem.config.cjs`), which nginx load-balances via the upstream block.
+`pm2 save` + the `pm2-root` systemd unit bring them back after a reboot.
 
 ## Frontend deploys
 
 ```
-cd Backend/../frontend && npm run build
-rsync -a --delete dist/ /var/www/zicab/
+cd /var/www/24fastgo && git pull
+cd frontend && npm ci && npm run build
+rsync -a --delete dist/ /var/www/24fastgo-web/
 ```
+
+`frontend/.env.production` (not in git) holds the build-time `VITE_*` values.
 
 `--delete` is deliberate: it clears the previous build's hashed asset files so
 they do not accumulate.
@@ -31,25 +40,22 @@ the previous set. If a browser holds a stale `index.html`, it requests chunk
 filenames that no longer exist, gets 404s, and renders a **blank page** — the
 shell paints but nothing else does.
 
-This happened in production: `index.html` was served with only `Last-Modified`
-and `ETag`, so browsers cached it heuristically, and anyone with a page open
-across a deploy got a blank screen until they hard-refreshed.
-
 The config therefore splits the two:
 
 - `location = /index.html` → `no-cache, must-revalidate`
 - `location /assets/` → `public, immutable`, one year
 
-The entry point is revalidated every visit; the fingerprinted assets it points to
-are cached hard. Keep that split if the config is ever rewritten.
+Keep that split if the config is ever rewritten.
 
 ## Backend deploys
 
-Backend changes need no build. After editing files under `Backend/`:
+Backend changes need no build:
 
 ```
-pm2 restart zicab-api-5000 zicab-api-5001 zicab-api-5002 zicab-api-5003 --update-env
+cd /var/www/24fastgo && git pull
+cd Backend && npm ci --omit=dev
+pm2 restart ecosystem.config.cjs --update-env
 ```
 
-`--update-env` matters when `.env` has changed; without it the processes keep
-their old environment.
+`--update-env` matters when `Backend/.env` has changed; without it the processes
+keep their old environment.
