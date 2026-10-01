@@ -66,7 +66,7 @@ const Advertise = () => {
               const Icon = w.icon;
               return (
                 <div key={i} className="why-ad-card">
-                  <div className="why-ad-icon"><Icon size={22} color="#00BBA9" /></div>
+                  <div className="why-ad-icon"><Icon size={22} style={{ color: 'var(--accent-fg)' }} /></div>
                   <h3>{w.title}</h3>
                   <p>{w.desc}</p>
                 </div>
@@ -89,7 +89,7 @@ const Advertise = () => {
               const Icon = p.icon;
               return (
                 <div key={i} className="placement-card">
-                  <div className="pl-icon"><Icon size={22} color="#00BBA9" /></div>
+                  <div className="pl-icon"><Icon size={22} style={{ color: 'var(--accent-fg)' }} /></div>
                   <h3 className="pl-title">{p.title}</h3>
                   <p className="pl-desc">{p.desc}</p>
                   <div className="pl-formats">
@@ -117,7 +117,7 @@ const Advertise = () => {
               const Icon = ind.icon;
               return (
                 <div key={i} className="industry-card">
-                  <Icon size={22} color="#00BBA9" />
+                  <Icon size={22} style={{ color: 'var(--accent-fg)' }} />
                   <span>{ind.label}</span>
                 </div>
               );
@@ -155,7 +155,7 @@ const Advertise = () => {
           <div className="ad-form-card" data-reveal>
             {submitted ? (
               <div className="ad-success">
-                <CheckCircle2 size={50} color="#00BBA9" />
+                <CheckCircle2 size={50} style={{ color: 'var(--accent-fg)' }} />
                 <h3>Enquiry Received</h3>
                 <p>
                   Thanks, <strong>{contactName || 'there'}</strong>. Our ad sales team will contact{' '}
@@ -243,7 +243,7 @@ const Advertise = () => {
                 {error && (
                   <p style={{ color: '#e11d48', fontSize: '0.85rem', marginBottom: '0.75rem' }}>{error}</p>
                 )}
-                <button type="submit" className="btn btn-teal w-full" disabled={sending}>
+                <button type="submit" className="btn btn-accent w-full" disabled={sending}>
                   {sending ? 'Sending\u2026' : 'Send Enquiry'} <Send size={16} />
                 </button>
               </form>
@@ -272,7 +272,7 @@ const Advertise = () => {
           .why-ad-icon {
             width: 46px;
             height: 46px;
-            background: #E6F8F6;
+            background: #FFF8D6;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -310,7 +310,7 @@ const Advertise = () => {
           }
 
           .placement-card:hover {
-            border-color: #00BBA9;
+            border-color: var(--brand-yellow);
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
           }
@@ -318,7 +318,7 @@ const Advertise = () => {
           .pl-icon {
             width: 44px;
             height: 44px;
-            background: rgba(0, 187, 169, 0.1);
+            background: rgba(251, 222, 43, 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -357,7 +357,8 @@ const Advertise = () => {
           }
 
           .industries-section {
-            background: linear-gradient(135deg, #07152B 0%, #0B1F3A 100%);
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--primary-navy) 100%);
+            --accent-fg: var(--brand-yellow);
           }
 
           .industries-grid {
@@ -381,7 +382,7 @@ const Advertise = () => {
           }
 
           .industry-card:hover {
-            border-color: #00BBA9;
+            border-color: var(--brand-yellow);
             transform: translateY(-3px);
           }
 
@@ -413,7 +414,7 @@ const Advertise = () => {
             gap: 3px;
             background: #F8FAFC;
             border: 1px solid #E2E8F0;
-            border-left: 3px solid #00BBA9;
+            border-left: 3px solid var(--brand-yellow);
             border-radius: 10px;
             padding: 12px 16px;
           }
@@ -431,11 +432,12 @@ const Advertise = () => {
             color: #0F172A;
           }
 
-          .ad-contact-item a:hover { color: #00BBA9; }
+          .ad-contact-item a:hover { color: var(--accent-fg); }
 
           .ad-form-card {
             background: #0C1B30;
-            border: 1px solid rgba(0, 187, 169, 0.3);
+            --accent-fg: var(--brand-yellow);
+            border: 1px solid rgba(251, 222, 43, 0.3);
             border-radius: 16px;
             padding: 32px;
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
@@ -484,7 +486,7 @@ const Advertise = () => {
           }
 
           .ad-field input:focus, .ad-field select:focus, .ad-field textarea:focus {
-            border-color: #00BBA9;
+            border-color: var(--brand-yellow);
           }
 
           .ad-field input::placeholder, .ad-field textarea::placeholder {
@@ -493,6 +495,7 @@ const Advertise = () => {
 
           .ad-field select option {
             background: #0C1B30;
+            --accent-fg: var(--brand-yellow);
           }
 
           .ad-success {

@@ -79,7 +79,7 @@ const Services = ({ openBookingModal }) => {
                   <div className="s-card-content">
                     <div className="s-title-row">
                       <div className="s-icon-bg">
-                        <IconComp size={22} color="#00BBA9" />
+                        <IconComp size={22} style={{ color: 'var(--accent-fg)' }} />
                       </div>
                       <h3 className="s-title">{s.title}</h3>
                     </div>
@@ -92,14 +92,14 @@ const Services = ({ openBookingModal }) => {
                       <div className="s-features-list">
                         {s.features.map((feat, i) => (
                           <div key={i} className="sf-item">
-                            <CheckCircle size={15} color="#00BBA9" />
+                            <CheckCircle size={15} style={{ color: 'var(--accent-fg)' }} />
                             <span>{feat}</span>
                           </div>
                         ))}
                       </div>
                     )}
 
-                    <button className="btn btn-teal w-full mt-4" onClick={openBookingModal}>
+                    <button className="btn btn-accent w-full mt-4" onClick={openBookingModal}>
                       {servicesPage.ctaLabel} <ArrowRight size={16} />
                     </button>
                   </div>
@@ -132,7 +132,7 @@ const Services = ({ openBookingModal }) => {
           .service-detail-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: #00BBA9;
+            border-color: var(--brand-yellow);
           }
 
           .s-card-img-box {
@@ -151,14 +151,15 @@ const Services = ({ openBookingModal }) => {
             position: absolute;
             top: 14px;
             right: 14px;
-            background: rgba(7, 21, 43, 0.85);
+            background: rgba(7, 29, 47, 0.85);
+            --accent-fg: var(--brand-yellow);
             backdrop-filter: blur(6px);
-            color: #00BBA9;
+            color: var(--accent-fg);
             font-size: 11.5px;
             font-weight: 600;
             padding: 4px 12px;
             border-radius: 20px;
-            border: 1px solid rgba(0, 187, 169, 0.4);
+            border: 1px solid rgba(251, 222, 43, 0.4);
           }
 
           .s-card-content {
@@ -178,7 +179,7 @@ const Services = ({ openBookingModal }) => {
           .s-icon-bg {
             width: 40px;
             height: 40px;
-            background: rgba(0, 187, 169, 0.1);
+            background: rgba(251, 222, 43, 0.1);
             border-radius: 10px;
             display: flex;
             align-items: center;
