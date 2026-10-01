@@ -111,7 +111,7 @@ const Services = ({ openBookingModal }) => {
       </section>
 
       <style>{`
-        .zicab-landing {
+        .landing-24fastgo {
           .services-list-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);

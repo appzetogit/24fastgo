@@ -8,8 +8,8 @@
  * preloader's own hard timeout — so the gate always opens.
  */
 
-const KEY = 'zicab:intro-played';
-const EVENT = 'zicab:intro-done';
+const KEY = '24fastgo:intro-played';
+const EVENT = '24fastgo:intro-done';
 
 let done = false;
 try {

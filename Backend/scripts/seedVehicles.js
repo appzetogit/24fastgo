@@ -1,5 +1,5 @@
 /**
- * Seed the admin vehicle catalog with the ZI CAB fleet.
+ * Seed the admin vehicle catalog with the 24FastGo fleet.
  *
  * Idempotent: matches on name, so re-running updates rather than duplicating.
  * Images point at the files already in frontend/public/vehicles.

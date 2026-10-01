@@ -1621,8 +1621,8 @@ export const sendTestMail = asyncHandler(async (req, res) => {
   try {
     await sendEmail({
       to,
-      subject: 'ZI CAB SMTP test',
-      text: `This is a test message from the ZI CAB admin panel.
+      subject: '24FastGo SMTP test',
+      text: `This is a test message from the 24FastGo admin panel.
 
 SMTP host: ${status.host}:${status.port}
 If you received this, outgoing mail works.`,

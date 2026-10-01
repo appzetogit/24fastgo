@@ -20,8 +20,8 @@ import sharp from 'sharp';
 
 const APPLY = process.argv.includes('--apply');
 const MONGO = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
-const DB = process.env.MONGODB_DB_NAME || 'zicab_prod';
-const UPLOAD_DIR = '/root/zicab/Backend/uploads/vehicle-types';
+const DB = process.env.MONGODB_DB_NAME || '24fastgo_taxi';
+const UPLOAD_DIR = '/var/www/24fastgo/Backend/uploads/vehicle-types';
 const FIELDS = ['image', 'icon', 'map_icon'];
 
 const isDataUri = (v) => typeof v === 'string' && v.startsWith('data:');

@@ -1,6 +1,6 @@
-/* ZI CAB landing styles.
+/* 24FastGo landing styles.
 
-   Everything below is nested under `.zicab-landing` so it cannot reach the taxi
+   Everything below is nested under `.landing-24fastgo` so it cannot reach the taxi
    app: both sides use generic class names (`container`, `btn`, `section-title`)
    and the taxi side is Tailwind 4, which an unscoped `*` or `h1` rule would
    restyle wholesale.
@@ -65,13 +65,13 @@
 /* The taxi app enforces its font with `* { font-family: ... !important }`, so the
    landing has to answer in kind. Higher specificity wins between two important
    declarations, which is why the heading rules below still take precedence. All
-   of it stays inside .zicab-landing. */
-.zicab-landing,
-.zicab-landing * {
+   of it stays inside .landing-24fastgo. */
+.landing-24fastgo,
+.landing-24fastgo * {
   font-family: var(--font-main) !important;
 }
 
-.zicab-landing {
+.landing-24fastgo {
   box-sizing: border-box;
   background-color: var(--bg-light);
   color: var(--text-body);
@@ -80,14 +80,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.zicab-landing *,
-.zicab-landing *::before,
-.zicab-landing *::after {
+.landing-24fastgo *,
+.landing-24fastgo *::before,
+.landing-24fastgo *::after {
   box-sizing: border-box;
 }
 
-.zicab-landing {
-  /* ZI CAB Custom CSS Design System */
+.landing-24fastgo {
+  /* 24FastGo Custom CSS Design System */
 
 
   /* Display type: tighter tracking and optical sizing at large sizes. Default
