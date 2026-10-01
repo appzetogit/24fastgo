@@ -87,8 +87,8 @@ export const LANDING_FALLBACK = {
     // Empty: the site uses the logo from General Settings. Set this only to
     // give the website a different logo from the rest of the product.
     logo: '',
-    wordmarkPrimary: 'ZI',
-    wordmarkSecondary: 'CAB',
+    wordmarkPrimary: '24',
+    wordmarkSecondary: 'FastGo',
     tagline: 'Your Ride. Our Priority.',
     appBlurb: 'Book rides in seconds, track drivers live, and manage invoices with the 24FastGo app.',
     playStoreUrl: '',
